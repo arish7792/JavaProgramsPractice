@@ -1,4 +1,4 @@
-package practiceTest;
+package practice;
 
 public class Node3 {
 	
@@ -10,50 +10,57 @@ public class Node3 {
 		this.next = null;
 	}
 	
-	public static void reverse(Node3 root) {
-		Node3 prev = null;
-		Node3 next = null;
-		
-		while(root!=null) {
-			next = root.next;
-			root.next = prev;
-			prev = root;
-			root =next;
+	 static Node3 root = null;
+	 static Node3 root1;
+	
+	public static void push(int a) {
+//		if(root==null) {
+//			root.data = a;
+//		}
+//		else {
+			Node3 x = new Node3(a);
+			x.next = root;
+			root = x;
+			root1=root;
 		}
+//	}
+	
+	public static void pop() {
 		
-		while(root!=null) {
-			System.out.println(root.data);
-			root=root.next;
+		if(root1!=null) {
+			System.out.println(root1.data);
+			//Node temp = null;
+			root1 = root1.next;
+			
 		}
+//		else {
+//			sys
+//		}
+		
 	}
 	
-	public static void middleElement(Node3 root) {
-		
-		Node3 first = root;
-		Node3 second = root;
-		
-		while(first.next!=null && second.next!=null && second.next.next!=null){
-			first = first.next;
-			second = second.next.next;
+	public static void print() {
+		while(root!=null) {
+			System.out.print(root.data+" ");
+			root = root.next;
 		}
-		
-		System.out.println(first.data);
 	}
-	
-	
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		push(1);
+		push(2);
+		push(3);
+		push(4);
 		
-		Node3 root = new Node3(1);
-		root.next = new Node3(2);
-		root.next.next = new Node3(3);
-		root.next.next.next = new Node3(4);
-		root.next.next.next.next = new Node3(5);
-		
-
-		middleElement(root);
-		
+		print();
+		System.out.println();
+		pop();
+		System.out.println();
+		pop();
+		System.out.println();
+		pop();
+		System.out.println();
+		pop();
 	}
 
 }

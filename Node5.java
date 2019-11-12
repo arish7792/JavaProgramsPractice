@@ -1,38 +1,46 @@
-package practiceTest;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+package practice;
 
 public class Node5 {
+	int data;
+	Node5 left;
+	Node5 right;
 	
-	int start;
-	int end;
+	Node5(int data){
+		this.data = data;
+		this.left = null;
+		this.right = null;
+	}
 	
-	Node5(int start, int end){
-		this.start = start;
-		this.end = end;
+	// searching the element.
+	public static void search(Node5 root, int key) {
+		if(root==null) {
+			System.out.println("Not found");
+		}
+		else if(root.data == key) {
+			System.out.println("found");
+		}
+		else if(key>root.data) {
+			search(root.right,key);
+		}
+		else {
+			search(root.left,key);
+		}
 	}
 	
 	
-	public static void overlapping(ArrayList<Node5> list) {
-		
-	}
 
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 		
-		ArrayList<Node5> list = new ArrayList<Node5>();	
-		Node5 a = new Node5(1,2);
-		Node5 c = new Node5(7,10);
-		Node5 b = new Node5(2,8);
-		Node5 d = new Node5(12,18);
-		Node5 e = new Node5(17,19);
+		Node5 root = new Node5(8);
+		root.left = new Node5(3);
+		root.left.left = new Node5(1);
+		root.right = new Node5(10);
+		root.left.left = new Node5(1);
+		root.left.right = new Node5(6);
+		root.right.right = new Node5(14);
 		
-		list.add(b);
-		list.add(d);
-		list.add(e);
-		list.add(a);
-		list.add(c);
+		//search(root,11);
 
 	}
 

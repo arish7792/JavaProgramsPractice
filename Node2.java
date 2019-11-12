@@ -1,43 +1,45 @@
-package practiceTest;
+package practice;
 
 public class Node2 {
-	
-	Node2 next;
-	int data;
-	int max;
-	
-	static Node2 start;
-	
-	public static void push(int value) {
+		Node2 next;
+		int data;
 		
-		Node2 node = new Node2();
-		node.data = value;
+		Node2(int data){
+			this.data = data;
+			this.next = null;
+		}
 		
-		if (start==null) {
-			start = node;
+		public static void reverse(Node2 root) {
+			Node2 prev = null;
+			Node2 next = null;
+			//Node current;
+			
+			while(root!=null) {
+				next = root.next;
+				root.next = prev;
+				prev=root;
+				root=next;
+			}
+			
+			while(prev!=null) {
+				System.out.println(prev.data);
+				prev = prev.next;
+			}
+			
 		}
-		else {
-			node.next = start;
-			start = node;
-		}
-	}
-	
-	public static void pop() {
-		start = start.next;
-	}
-	
-	public static void print() {
-		while(start.next!=null) {
-			System.out.print(start.data+" ");
-			start = start.next;
-		}
-	}
 	
 	public static void main(String[] args) {
-		push(8);
-		push(9);
-		push(10);
-		print();
+		// TODO Auto-generated method stub
+		
+		Node2 root = new Node2(1);
+		root.next = new Node2(2);
+		root.next.next = new Node2(3);
+		root.next.next.next = new Node2(4);
+		root.next.next.next.next = new Node2(5);
+		
+		reverse(root);
+		
+
 	}
 
 }
